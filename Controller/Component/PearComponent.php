@@ -1,13 +1,31 @@
 <?php
+/**
+ * Pear Component 
+ **/
+class PearComponent extends Component {
+    
+    public $components = array();
 
-class PearComponent extends Object {
-	public $controller;
-	
-	function initialize(&$controller, $settings = array()) {
-        $this->controller = $controller;
+    function __construct(ComponentCollection $collection, $settings = array()) {
+        parent::__construct($collection, $settings);
+    }
+
+    public function initialize($controller) {
+    }
+
+    public function startup($controller) {
+    }
+
+    public function beforeRender($controller) {
+    }
+
+    public function shutdown($controller) {
+    }
+
+    public function beforeRedirect($controller, $url, $status=null, $exit=true) {
     }
     
-	function import($key) {
+	public function import($key) {
 		$this->__setPearEnviroment();
 		App::import('Vendor', $key, array(
 			'file' => str_replace(DS, '/', $key) . '.php',
