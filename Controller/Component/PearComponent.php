@@ -2,6 +2,7 @@
 /**
  * Pear Component 
  **/
+App::uses('Component', 'Controller');
 class PearComponent extends Component {
     
     public $components = array();
@@ -27,9 +28,8 @@ class PearComponent extends Component {
     
 	public function import($key) {
 		$this->__setPearEnviroment();
-		App::import('Vendor', $key, array(
-			'file' => str_replace(DS, '/', $key) . '.php',
-			'plugin' => 'Pear'
+		App::import('Vendor', "Pear.$key", array(
+			'file' => 'pear' . DS . str_replace(DS, '/', $key) . '.php',
 		));
 	}
 	
